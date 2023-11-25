@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 00:05:23 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:49:10 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,9 +248,9 @@ void			validate_rgb_values(int r, int g, int b);
 void			validate_normal_vector(int x, int y, int z);
 float			validate_fov(float fov);
 void			validate_plane_values(char **plane_point, char **plane_normal, \
-							char **plane_color);
-void			validate_cyl_values(char **plane_point, char **plane_normal, \
-							char **plane_color);
+							char **plane_color, char **line);
+void			validate_cyl_values(char **cyl_point, char **cyl_normal, \
+							char **cyl_color, char **line);
 void			validate_line_values(char **line);
 
 /*****************/

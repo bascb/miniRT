@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validators.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/03 15:14:41 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:48:23 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,61 @@ float	validate_fov(float fov)
 }
 
 void	validate_plane_values(char **plane_point, char **plane_normal, \
-							char **plane_color)
+							char **plane_color, char **line)
 {
 	if (!plane_point[0] || !plane_point[1] || !plane_point[2])
-		send_error("Plane point values must be provided in format: x,y,z\n");
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(plane_point);
+		free_matrix(plane_normal);
+		free_matrix(plane_color);
+		end_program();
+		send_error("Plane point values must be provided in format: x,y,z\n");		
+	}
 	if (!plane_normal[0] || !plane_normal[1] || !plane_normal[2])
+	{
+		free_matrix(plane_normal);
 		send_error("Plane normal values must be provided in format: x,y,z\n");
+	}
 	if (!plane_color[0] || !plane_color[1] || !plane_color[2])
+	{
+		free_matrix(plane_color);
 		send_error("Color values must be in format: R,G,B. range 0-255.\n");
+	}
 }
 
-void	validate_cyl_values(char **plane_point, char **plane_normal, \
-							char **plane_color)
+void	validate_cyl_values(char **cyl_point, char **cyl_normal, \
+							char **cyl_color, char **line)
 {
-	if (!plane_point[0] || !plane_point[1] || !plane_point[2])
+	if (!cyl_point[0] || !cyl_point[1] || !cyl_point[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(cyl_point);
+		free_matrix(cyl_normal);
+		free_matrix(cyl_color);
+		end_program();
 		send_error("Cylinder values must be provided in format: x,y,z\n");
-	if (!plane_normal[0] || !plane_normal[1] || !plane_normal[2])
+	}
+	if (!cyl_normal[0] || !cyl_normal[1] || !cyl_normal[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(cyl_point);
+		free_matrix(cyl_normal);
+		free_matrix(cyl_color);
+		end_program();
 		send_error("Cyl normal values must be provided in format: x,y,z\n");
-	if (!plane_color[0] || !plane_color[1] || !plane_color[2])
+	}
+	if (!cyl_color[0] || !cyl_color[1] || !cyl_color[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(cyl_point);
+		free_matrix(cyl_normal);
+		free_matrix(cyl_color);
+		end_program();
 		send_error("Color values must be in format: R,G,B. range 0-255.\n");
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:13:10 by simao             #+#    #+#             */
-/*   Updated: 2023/11/08 00:25:17 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:45:19 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,26 @@ void	parse_sphere(char **line)
 
 	sphere_pos = ft_split(line[1], ',');
 	if (!sphere_pos[0] || !sphere_pos[1] || !sphere_pos[2])
-		send_error("Sphere center values must be provided in format: x,y,z\n");
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(sphere_pos);
+		end_program();
+		send_error("Sphere center values must be provided in format: x,y,z\n");	
+	}
 	sphr.center.x = ft_atof(sphere_pos[0]);
 	sphr.center.y = ft_atof(sphere_pos[1]);
 	sphr.center.z = ft_atof(sphere_pos[2]);
 	sphr.radius = ft_atof(line[2]) / 2;
 	sphere_color = ft_split(line[3], ',');
 	if (!sphere_color[0] || !sphere_color[1] || !sphere_color[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(sphere_color);
+		end_program();
 		send_error("Color values must be in format: R,G,B. range 0-255.\n");
+	}
 	sphr.color.r = ft_atof(sphere_color[0]);
 	sphr.color.g = ft_atof(sphere_color[1]);
 	sphr.color.b = ft_atof(sphere_color[2]);
@@ -57,7 +69,7 @@ void	parse_plane(char **line)
 	plane_point = ft_split(line[1], ',');
 	plane_normal = ft_split(line[2], ',');
 	plane_color = ft_split(line[3], ',');
-	validate_plane_values(plane_point, plane_normal, plane_color);
+	validate_plane_values(plane_point, plane_normal, plane_color, line);
 	pln.point.x = ft_atof(plane_point[0]);
 	pln.point.y = ft_atof(plane_point[1]);
 	pln.point.z = ft_atof(plane_point[2]);
@@ -90,7 +102,7 @@ void	parse_cylinder(char **line)
 	position = ft_split(line[1], ',');
 	normal = ft_split(line[2], ',');
 	color = ft_split(line[5], ',');
-	validate_cyl_values(position, normal, color);
+	validate_cyl_values(position, normal, color, line);
 	cyl.pos.x = ft_atof(position[0]);
 	cyl.pos.y = ft_atof(position[1]);
 	cyl.pos.z = ft_atof(position[2]);
