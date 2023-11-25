@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 19:00:25 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:57:08 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,7 @@ void			set_mlx(void);
 void			set_sphere(float diameter, t_Vector center, t_Color color);
 void			set_plane(t_Vector point, t_Vector normal, t_Color color);
 void			set_cylinder(t_Cylinder cylinder);
+void			set_default_values(void);
 
 /**************/
 /* RENDERER  */
