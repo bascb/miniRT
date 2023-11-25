@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 17:09:07 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:27:14 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,6 +306,5 @@ float			ft_atof(const char *str);
 char			*ft_strdup(char *s1);
 t_RotMatrix		create_rot_matrix(t_Vector axis, float angle);
 t_RotMatrix		rotate_camera(void);
-
 
 #endif
