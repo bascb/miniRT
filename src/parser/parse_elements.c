@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/03 15:14:18 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:14:17 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,23 @@ void	parse_camera(char **line)
 		send_error("One or more camera values are missing\n");
 	camera_pos = ft_split(line[1], ',');
 	if (!camera_pos[0] || !camera_pos[1] || !camera_pos[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(camera_pos);
 		send_error("Camera values must be provided in format: x,y,z\n");
+	}
 	cam_pos.x = ft_atoi(camera_pos[0]);
 	cam_pos.y = ft_atoi(camera_pos[1]);
 	cam_pos.z = ft_atoi(camera_pos[2]);
 	camera_dir = ft_split(line[2], ',');
 	if (!camera_dir[0] || !camera_dir[1] || !camera_dir[2])
-		send_error("Camera values must be provided in format: x,y,z\n");
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(camera_dir);
+		send_error("Camera values must be provided in format: x,y,z\n");	
+	}
 	cam_dir.x = ft_atof(camera_dir[0]);
 	cam_dir.y = ft_atof(camera_dir[1]);
 	cam_dir.z = ft_atof(camera_dir[2]);
@@ -91,7 +101,13 @@ void	parse_light(char **line)
 		send_error("One or more light values are missing\n");
 	light_pos = ft_split(line[1], ',');
 	if (!light_pos[0] || !light_pos[1] || !light_pos[2])
+	{
+		free(scene()->line_buffer);
+		free_matrix(line);
+		free_matrix(light_pos);
+		end_program();
 		send_error("Light values must be provided in format: x,y,z\n");
+	}
 	light_position.x = ft_atof(light_pos[0]);
 	light_position.y = ft_atof(light_pos[1]);
 	light_position.z = ft_atof(light_pos[2]);
