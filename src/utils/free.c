@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/08 00:15:54 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:15:29 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void	end_program(void)
 		free(scene()->planes);
 	if (scene()->cylinders != NULL)
 		free(scene()->cylinders);
+	if (scene()->lights != NULL)
+		free(scene()->lights);
 	exit(0);
 }
