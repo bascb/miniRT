@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 18:27:14 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:00:25 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,7 @@ void			put_pixel(int x, int y, t_Color color);
 void			free_matrix(char **matrix);
 void			end_program(void);
 void			send_error(char *error);
+void			send_error_and_close_fd(char *error, int fd);
 int				ft_atoi(const char *str);
 float			ft_atof(const char *str);
 char			*ft_strdup(char *s1);
