@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 22:33:12 by simao             #+#    #+#             */
-/*   Updated: 2023/11/03 15:08:19 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:10:10 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_Intersection	check_all_sp(t_Vector O, t_Vector D, float t_min, float t_max)
 	int				i;
 
 	i = -1;
-	intsct.clst_t = INT_MAX;
+	intsct.clst_t = (float)INT_MAX;
 	intsct.clst_sp = NULL;
 	intsct.clst_pl = NULL;
 	intsct.clst_cy = NULL;
@@ -68,7 +68,7 @@ t_Intersection	check_all_pl(t_Vector O, t_Vector D, float t_min, float t_max)
 	int				i;
 
 	i = -1;
-	intsct.clst_t = INT_MAX;
+	intsct.clst_t = (float)INT_MAX;
 	intsct.clst_sp = NULL;
 	intsct.clst_pl = NULL;
 	intsct.clst_cy = NULL;
@@ -101,7 +101,7 @@ t_Intersection	check_all_cy(t_Vector O, t_Vector D, float t_min, float t_max)
 	int				i;
 
 	i = -1;
-	intsct.clst_t = INT_MAX;
+	intsct.clst_t = (float)INT_MAX;
 	intsct.clst_sp = NULL;
 	intsct.clst_pl = NULL;
 	intsct.clst_cy = NULL;
@@ -139,7 +139,7 @@ t_Intersection	clst_intsct(t_Vector O, t_Vector D, float t_min, float t_max)
 	t_Intersection	pl;
 	t_Intersection	cy;
 
-	inter.clst_t = INT_MAX;
+	inter.clst_t = (float)INT_MAX;
 	inter.clst_sp = NULL;
 	inter.clst_pl = NULL;
 	inter.clst_cy = NULL;

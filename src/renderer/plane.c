@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:34:54 by simao             #+#    #+#             */
-/*   Updated: 2023/10/19 15:53:23 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:09:25 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ float	intrscts_pln(t_Vector O, t_Vector D, t_Plane pln)
 		planetoorigin = vector_sub(pln.point, O);
 		t = dot_product(planetoorigin, pln.normal) / denom;
 		if (t < 0)
-			t = INT_MAX;
+			t = (float)INT_MAX;
 		return (t);
 	}
 	return (t);

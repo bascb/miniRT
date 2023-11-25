@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:34:54 by simao             #+#    #+#             */
-/*   Updated: 2023/11/07 22:29:53 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:12:06 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void	check_cy_height(t_Point *itsct, t_Cylinder cy, t_Vector O, t_Vector D)
 	float		y2;
 
 	half_height = cy.height / 2.0;
-	if (itsct->t1 != INT_MAX)
+	if (itsct->t1 != (float)INT_MAX)
 	{
 		point1 = vector_add(O, vector_mult(D, itsct->t1));
 		y1 = point1.y - cy.pos.y;
 		if (y1 < -half_height || y1 > half_height)
-			itsct->t1 = INT_MAX;
+			itsct->t1 = (float)INT_MAX;
 	}
-	if (itsct->t2 != INT_MAX)
+	if (itsct->t2 != (float)INT_MAX)
 	{
 		point2 = vector_add(O, vector_mult(D, itsct->t2));
 		y2 = point2.y - cy.pos.y;
 		if (y2 < -half_height || y2 > half_height)
-			itsct->t2 = INT_MAX;
+			itsct->t2 = (float)INT_MAX;
 	}
 }
 
@@ -88,8 +88,8 @@ t_Point	intrscts_cyl(t_Vector O, t_Vector D, t_Cylinder cylinder)
 	discriminant = a.y * a.y - 4.0f * a.x * a.z;
 	if (discriminant < 0)
 	{
-		intersections.t1 = INT_MAX;
-		intersections.t2 = INT_MAX;
+		intersections.t1 = (float)INT_MAX;
+		intersections.t2 = (float)INT_MAX;
 	}
 	else
 	{

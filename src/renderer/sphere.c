@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:34:54 by simao             #+#    #+#             */
-/*   Updated: 2023/11/07 16:59:52 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/24 18:09:40 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ t_Point	intrscts_sphr(t_Vector O, t_Vector D, t_Sphere sphere)
 	intersections.t2 = (-b - sqrt(discriminant)) / (2 * a);
 	if (discriminant < 0)
 	{
-		intersections.t1 = INT_MAX;
-		intersections.t2 = INT_MAX;
+		intersections.t1 = (float)INT_MAX;
+		intersections.t2 = (float)INT_MAX;
 	}
 	return (intersections);
 }
