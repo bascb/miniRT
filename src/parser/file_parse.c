@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 19:02:10 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 20:57:48 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,6 @@ int	parse_file(char **argv)
 	}
 	free(scene()->line_buffer);
 	close(fd);
+	set_default_values();
 	return (1);
 }
