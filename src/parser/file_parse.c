@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 00:07:54 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:58:23 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	end_file(char *buffer)
  * from the subject or if it is only a empty line.
  * 
  * @param buffer the line read by get_next_line.
- * @returns returns 1 or 0. When 1 the file should continue to be read on parse_file.
+ * @returns returns 1 or 0. When 1 the file should continue 
+ * to be read on parse_file.
  */
 int	check_identifier(char *buffer)
 {
@@ -76,6 +77,7 @@ int	check_identifier(char *buffer)
 	if (!ft_strncmp(buffer, "\n", 2))
 		return (1);
 	line = ft_split(buffer, ' ');
+	scene()->line = line;
 	if (!line)
 		return (0);
 	if (!ft_strncmp(line[0], "C", 1) || !ft_strncmp(line[0], "A", 1) \
@@ -87,6 +89,7 @@ int	check_identifier(char *buffer)
 		send_error("Valid identifiers are :\n A\n C\n L\n sp\n pl\n cy\n \
 		NIGHT\n MAke sure to leave a space after each one\n");
 	free_matrix(line);
+	scene()->line = NULL;
 	return (1);
 }
 

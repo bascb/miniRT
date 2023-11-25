@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 00:15:29 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:47:04 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,9 @@ void	end_program(void)
 		free(scene()->cylinders);
 	if (scene()->lights != NULL)
 		free(scene()->lights);
+	if (scene()->line != NULL)
+		free_matrix(scene()->line); 
+	if (scene()->line_buffer != NULL)
+		free(scene()->line_buffer); 
 	exit(0);
 }

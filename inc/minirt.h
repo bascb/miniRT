@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 00:49:10 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:09:07 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct scene
 	int			cyl_count;
 	int			background;
 	int			max_obj_count;
+	char		**line;
 	char		*line_buffer;
 }	t_Scene;
 

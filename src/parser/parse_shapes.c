@@ -6,11 +6,20 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:13:10 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 00:45:19 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:10:26 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+
+void	check_sp_data(char **sphere_data, char *msg)
+{
+	if (!sphere_data[0] || !sphere_data[1] || !sphere_data[2])
+	{
+		free_matrix(sphere_data);
+		send_error(msg);
+	}
+}
 
 /**
  * @brief Extract and validate sphere values. 
@@ -24,34 +33,22 @@ void	parse_sphere(char **line)
 	t_Sphere	sphr;
 
 	sphere_pos = ft_split(line[1], ',');
-	if (!sphere_pos[0] || !sphere_pos[1] || !sphere_pos[2])
-	{
-		free(scene()->line_buffer);
-		free_matrix(line);
-		free_matrix(sphere_pos);
-		end_program();
-		send_error("Sphere center values must be provided in format: x,y,z\n");	
-	}
+	check_sp_data(sphere_pos, "Sphere center val must be\
+	provided in format: x,y,z\n");
 	sphr.center.x = ft_atof(sphere_pos[0]);
 	sphr.center.y = ft_atof(sphere_pos[1]);
 	sphr.center.z = ft_atof(sphere_pos[2]);
+	free_matrix(sphere_pos);
 	sphr.radius = ft_atof(line[2]) / 2;
 	sphere_color = ft_split(line[3], ',');
-	if (!sphere_color[0] || !sphere_color[1] || !sphere_color[2])
-	{
-		free(scene()->line_buffer);
-		free_matrix(line);
-		free_matrix(sphere_color);
-		end_program();
-		send_error("Color values must be in format: R,G,B. range 0-255.\n");
-	}
+	check_sp_data(sphere_color, "Color values must be in format:\
+	R,G,B. range 0-255.\n");
 	sphr.color.r = ft_atof(sphere_color[0]);
 	sphr.color.g = ft_atof(sphere_color[1]);
 	sphr.color.b = ft_atof(sphere_color[2]);
+	free_matrix(sphere_color);
 	validate_rgb_values(sphr.color.r, sphr.color.g, sphr.color.b);
 	set_sphere(sphr.radius, sphr.center, sphr.color);
-	free_matrix(sphere_pos);
-	free_matrix(sphere_color);
 }
 
 /**
@@ -73,18 +70,18 @@ void	parse_plane(char **line)
 	pln.point.x = ft_atof(plane_point[0]);
 	pln.point.y = ft_atof(plane_point[1]);
 	pln.point.z = ft_atof(plane_point[2]);
+	free_matrix(plane_point);
 	pln.normal.x = ft_atof(plane_normal[0]);
 	pln.normal.y = ft_atof(plane_normal[1]);
 	pln.normal.z = ft_atof(plane_normal[2]);
+	free_matrix(plane_normal);
 	validate_normal_vector(pln.normal.x, pln.normal.y, pln.normal.z);
 	pln.color.r = ft_atof(plane_color[0]);
 	pln.color.g = ft_atof(plane_color[1]);
 	pln.color.b = ft_atof(plane_color[2]);
+	free_matrix(plane_color);
 	validate_rgb_values(pln.color.r, pln.color.g, pln.color.b);
 	set_plane(pln.point, pln.normal, pln.color);
-	free_matrix(plane_point);
-	free_matrix(plane_normal);
-	free_matrix(plane_color);
 }
 
 /**
