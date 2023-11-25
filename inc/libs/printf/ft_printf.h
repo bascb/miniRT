@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:58:41 by smagalha          #+#    #+#             */
-/*   Updated: 2023/01/08 16:42:27 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:25:32 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int		ft_putaddress(unsigned long address);
 int		ft_printf(const char *s, ...);
 int		ft_putnbru(unsigned int nb, int fd);
 char	**ft_split(char const *s, char c);
-int	    ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

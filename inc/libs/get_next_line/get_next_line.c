@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smagalha <smagalha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:25:52 by smagalha          #+#    #+#             */
-/*   Updated: 2023/01/21 16:21:21 by smagalha         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:22:22 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strjoin_ft(char *str1, char *str2)
 	if (!newstr)
 		return (NULL);
 	while (str1 && str1[i])
-	{	
+	{
 		newstr[i] = str1[i];
 		i++;
 	}
