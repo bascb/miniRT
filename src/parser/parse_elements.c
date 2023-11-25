@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 18:14:12 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:07:26 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ void	parse_light(char **line)
 	light_position.x = ft_atof(light_pos[0]);
 	light_position.y = ft_atof(light_pos[1]);
 	light_position.z = ft_atof(light_pos[2]);
+	free_matrix(light_pos);
 	intensity = ft_atof(line[2]);
 	if (intensity < 0.0 || intensity > 1.0)
 		send_error("Point Light intensity value must be between 0.0 and 1.0\n");
 	set_point_light(intensity, light_position);
-	free_matrix(light_pos);
 }

@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 17:58:23 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:02:10 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,10 @@ int	parse_file(char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (valid_file_extension(argv[1]) == 0 || fd == -1)
-	{
-		close(fd);
-		send_error("Please provice a .rt file");
-	}
+		send_error_and_close_fd("Please provide a .rt file", fd);
 	scene()->line_buffer = get_next_line(fd);
+	if (!scene()->line_buffer)
+		send_error_and_close_fd("File is empty", fd);
 	while (scene()->line_buffer)
 	{
 		if (!check_identifier(scene()->line_buffer))
