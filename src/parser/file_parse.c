@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/07 23:03:24 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:07:54 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	end_file(char *buffer)
  * from the subject or if it is only a empty line.
  * 
  * @param buffer the line read by get_next_line.
+ * @returns returns 1 or 0. When 1 the file should continue to be read on parse_file.
  */
 int	check_identifier(char *buffer)
 {
@@ -115,7 +116,6 @@ int	valid_file_extension(char *file)
 int	parse_file(char **argv)
 {
 	int		fd;
-	char	*buffer;
 
 	fd = open(argv[1], O_RDONLY);
 	if (valid_file_extension(argv[1]) == 0 || fd == -1)
@@ -123,19 +123,19 @@ int	parse_file(char **argv)
 		close(fd);
 		send_error("Please provice a .rt file");
 	}
-	buffer = get_next_line(fd);
-	while (buffer)
+	scene()->line_buffer = get_next_line(fd);
+	while (scene()->line_buffer)
 	{
-		if (!check_identifier(buffer))
+		if (!check_identifier(scene()->line_buffer))
 		{
-			free(buffer);
+			free(scene()->line_buffer);
 			close(fd);
 			return (0);
 		}
-		free(buffer);
-		buffer = get_next_line(fd);
+		free(scene()->line_buffer);
+		scene()->line_buffer = get_next_line(fd);
 	}
-	free(buffer);
+	free(scene()->line_buffer);
 	close(fd);
 	return (1);
 }
