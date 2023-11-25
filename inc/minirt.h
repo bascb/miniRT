@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/07 23:57:11 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/25 00:05:23 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct scene
 	int			cyl_count;
 	int			background;
 	int			max_obj_count;
+	char		*line_buffer;
 }	t_Scene;
 
 typedef struct close_intersection
