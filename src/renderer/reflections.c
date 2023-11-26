@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 22:33:12 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 20:47:13 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:55:44 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ float	calc_light(t_Vector P, t_Vector N, t_Vector V, float spec)
 		{
 			l_vector = vector_sub(scene()->lights[lightinfo.index].position, P);
 			t_max = 1;
+			sh = clst_intsct(P, l_vector, 0.001, t_max);
+			if (sh.clst_sp != NULL || sh.clst_pl != NULL || sh.clst_cy != NULL)
+				continue ;
+			diff_reflection(N, l_vector, lightinfo.intensity, lightinfo.index);
+			spec_reflection(N, l_vector, &lightinfo, V);
 		}
-		sh = clst_intsct(P, l_vector, 0.001, t_max);
-		if (sh.clst_sp != NULL || sh.clst_pl != NULL || sh.clst_cy != NULL)
-			continue ;
-		diff_reflection(N, l_vector, lightinfo.intensity, lightinfo.index);
-		spec_reflection(N, l_vector, &lightinfo, V);
 	}
 	return (i);
 }
