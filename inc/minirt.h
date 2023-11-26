@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 20:54:28 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 20:57:08 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/26 12:45:27 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct camera
 	t_Vector	dir;
 	t_Vector	initial_dir;
 	float		fov;
+	int			defined;
 }	t_Camera;
 
 typedef struct viewport

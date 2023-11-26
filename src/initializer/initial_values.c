@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initial_values.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simao <simao@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 22:09:38 by simao             #+#    #+#             */
-/*   Updated: 2023/11/07 16:59:20 by simao            ###   ########.fr       */
+/*   Updated: 2023/11/26 12:47:30 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	set_viewport(void)
  */
 void	set_camera(t_Vector cam_pos, t_Vector cam_dir, float fov)
 {
+	if (camera()->defined == 1)
+		send_error("C camera defined more than once in .rt file");
 	camera()->pos.x = cam_pos.x;
 	camera()->pos.y = cam_pos.y;
 	camera()->pos.z = cam_pos.z;
@@ -69,6 +71,7 @@ void	set_camera(t_Vector cam_pos, t_Vector cam_dir, float fov)
 	camera()->initial_dir.y = 0.0;
 	camera()->initial_dir.z = viewport()->dist;
 	set_fov(fov);
+	camera()->defined = 1;
 }
 
 /**

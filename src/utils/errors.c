@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:47:20 by simao             #+#    #+#             */
-/*   Updated: 2023/11/25 19:03:06 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:38:05 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	send_error(char *error)
 {
 	ft_putstr("\n", 2);
-	ft_putstr("Error: ", 2);
+	ft_putstr("Error\n", 2);
 	ft_putstr(error, 2);
 	ft_putstr("\n\n", 2);
 	end_program();
